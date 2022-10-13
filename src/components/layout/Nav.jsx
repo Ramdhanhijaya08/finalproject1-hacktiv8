@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import { FiSearch } from 'react-icons/fi';
 import { BsBookmark } from 'react-icons/bs';
@@ -11,9 +11,14 @@ const Nav = () => {
 	const [isNavMobile, setIsNavMobile] = useState(false);
 	const [searchValue, setSearchValue] = useState('');
 
+	const navigate = useNavigate();
+
 	const searchHandler = e => {
 		e.preventDefault();
-		console.log(1);
+
+		navigate(`/search/${searchValue}`);
+		setSearchValue('');
+		setIsSearch(false);
 	};
 
 	return (
@@ -83,6 +88,7 @@ const Nav = () => {
 						value={searchValue}
 						onChange={e => setSearchValue(e.target.value)}
 						className="h-6 w-full px-3 focus:outline-none"
+						required
 					/>
 					<UnstyledButton className="pr-2" type="submit">
 						<FiSearch size={20} />
