@@ -4,12 +4,16 @@ import App from './App';
 import './styles/tailwind.css';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<HelmetProvider>
-				<App />
+				<Provider store={store}>
+					<App />
+				</Provider>
 			</HelmetProvider>
 		</BrowserRouter>
 	</React.StrictMode>

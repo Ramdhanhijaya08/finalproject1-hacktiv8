@@ -18,15 +18,7 @@ const HomePage = () => {
 		<Layout title="Home">
 			<section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
 				{news?.map(n => (
-					<ArticleCard
-						key={n.title}
-						imgUrl={n.urlToImage}
-						title={n.title}
-						desc={n.description}
-						source={n.source.name}
-						author={n.author}
-						url={n.url}
-					/>
+					<ArticleCard article={n} key={n.title} />
 				))}
 			</section>
 		</Layout>
