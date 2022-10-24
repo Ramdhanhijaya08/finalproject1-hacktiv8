@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import axios from 'axios';
 import ArticleCard from '../components/ArticleCard';
 import { useParams } from 'react-router-dom';
+import { API_URL, API_KEY } from '../utils/config';
 
 const SearchPage = () => {
 	const [news, setNews] = useState([]);
@@ -12,7 +13,7 @@ const SearchPage = () => {
 	useEffect(() => {
 		(async () => {
 			setLoading(true);
-			const res = await axios.get(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=ee83a3d108ca49729e5c9932f78a7382`);
+			const res = await axios.get(`${API_URL}/everything?q=${keyword}&apiKey=${API_KEY}`);
 
 			setNews(res.data);
 			setLoading(false);
