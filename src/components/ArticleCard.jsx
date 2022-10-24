@@ -37,7 +37,7 @@ const ArticleCard = ({ article }) => {
 						onClick={() => dispatch(savedArticle(article))}
 						className="rounded-sm border border-red-300 py-2 px-4 font-poppins text-sm font-medium text-red-700 transition duration-300 hover:bg-slate-100"
 					>
-						{savedNews.find(news => news.title === article.title) ? 'UnSaved' : 'Saved'}
+						{savedNews.find(news => news.title === article.title) ? 'Unsave' : 'Save'}
 					</UnstyledButton>
 				</div>
 			</div>
