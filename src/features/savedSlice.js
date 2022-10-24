@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const localArticles = JSON.parse(localStorage.getItem('articles')) ?? [];
+
 const initialState = {
-	articles: [],
+	articles: localArticles,
 };
 
 export const savedSlice = createSlice({
@@ -11,9 +13,13 @@ export const savedSlice = createSlice({
 		savedArticle: (state, action) => {
 			const findArticle = state.articles.find(article => article.title === action.payload.title);
 			if (findArticle) {
-				state.articles = state.articles.filter(article => article.title !== action.payload.title);
+				const newArticles = state.articles.filter(article => article.title !== action.payload.title);
+				state.articles = newArticles;
+				localStorage.setItem('articles', JSON.stringify(newArticles));
 			} else {
-				state.articles = [action.payload, ...state.articles];
+				const newArticles = [action.payload, ...state.articles];
+				state.articles = newArticles;
+				localStorage.setItem('articles', JSON.stringify(newArticles));
 			}
 		},
 	},
